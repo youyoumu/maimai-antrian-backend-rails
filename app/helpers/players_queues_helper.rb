@@ -1,0 +1,2 @@
+module PlayersQueuesHelper
+end

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @players_queue %>
+
+<div>
+  <%= link_to "Edit this players queue", edit_players_queue_path(@players_queue) %> |
+  <%= link_to "Back to players queues", players_queues_path %>
+
+  <%= button_to "Destroy this players queue", @players_queue, method: :delete %>
+</div>

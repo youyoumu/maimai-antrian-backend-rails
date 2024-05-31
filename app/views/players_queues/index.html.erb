@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Players queues</h1>
+
+<div id="players_queues">
+  <% @players_queues.each do |players_queue| %>
+    <%= render players_queue %>
+    <p>
+      <%= link_to "Show this players queue", players_queue %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New players queue", new_players_queue_path %>
