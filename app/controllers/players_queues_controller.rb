@@ -1,9 +1,10 @@
 class PlayersQueuesController < ApplicationController
-  before_action :set_players_queue, only: %i[ show edit update destroy ]
+  before_action :set_players_queue, only: %i[show edit update destroy]
 
   # GET /players_queues or /players_queues.json
   def index
-    @players_queues = PlayersQueue.all
+    @players_queues = PlayersQueue.all.limit(10).order(created_at: :desc)
+    render json: @players_queues
   end
 
   # GET /players_queues/1 or /players_queues/1.json
@@ -58,13 +59,15 @@ class PlayersQueuesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_players_queue
-      @players_queue = PlayersQueue.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def players_queue_params
-      params.require(:players_queue).permit(:players, :user_id, :room_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_players_queue
+    @players_queue = PlayersQueue.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def players_queue_params
+    puts params
+    params.require(:players_queue).permit(:players, :user_id, :room_id)
+  end
 end
